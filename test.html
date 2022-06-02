@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function s() {
+            var history = document.getElementById('history');
+            if(!localStorage.getItem('count')) {
+                localStorage.setItem('count',1);
+            }
+        }
+
+        function now_display() {
+            var get1 = document.getElementById('get1').value;
+            var get2 = document.getElementById('get2').value;
+            var get3 = document.getElementById('get3').value;
+            var get4 = document.getElementById('get4').value;
+
+            var out1 = document.getElementById('img1');
+            var out2 = document.getElementById('img2');
+            var out3 = document.getElementById('img3');
+            var out4 = document.getElementById('img4');
+
+            if(get1 && get2 && get3 && get4) {
+                out1.src = get1;
+                out2.src = get2;
+                out3.src = get3;
+                out4.src = get4;
+            }else if(get1 && get2 && get3) {
+                out1.src = get1;
+                out2.src = get2;
+                out3.src = get3;
+            } else if(get2 && get3 && get4) {
+                out2.src = get2;
+                out3.src = get3;
+                out4.src = get4;
+            } else if(get1 && get2) {
+                out1.src = get1;
+                out2.src = get2;
+            } else if(get2 && get3 ) {
+                out2.src = get2;
+                out3.src = get3;
+            } else if(get1 && get3) {
+                out1.src = get1;
+                out3.src = get3;
+            } else if(get1 && get4) {
+                out1.src = get1;
+                out4.src = get4;
+            }
+        }
+
+    </script>
+</head>
+<body onload="s()">
+    画像のアドレス1<input type="text" id="get1">
+    画像のアドレス2<input type="text" id="get2">
+    画像のアドレス3<input type="text" id="get3">
+    画像のアドレス4<input type="text" id="get4">
+    <button onclick="now_display()">表示</button>
+
+    <br>
+    <br>
+    <br>
+    <img src="" id="img1" alt="" >
+    <br>
+    <br>
+    <img src="" id="img2" alt="" >
+    <br>
+    <br>
+    <img src="" id="img3" alt="" >
+    <br>
+    <br>
+    <img src="" id="img4" alt="" >
+    <br>
+    <br>
+    <br>
+    <div id="history">
+        <h2>履歴</h2>
+    </div>
+
+</body>
+</html>
