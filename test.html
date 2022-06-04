@@ -5,81 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container-item{
+            position: relative;
+            float: left;
+            width: 48%;
+        }
+        .container-item-img{
+            border: 1px solid #ccc;
+        }
+        .container-item-img img{
+            display: block;
+            height: 500px;
+            object-fit: scale-down;
+            width: 100%;
+        }
+    </style>
     <script>
-        function s() {
-            var history = document.getElementById('history');
-            if(!localStorage.getItem('count')) {
-                localStorage.setItem('count',1);
-            }
+        function str() {
+            var r = document.getElementById('h');
+            r.style.display = 'none';
         }
 
-        function now_display() {
-            var get1 = document.getElementById('get1').value;
-            var get2 = document.getElementById('get2').value;
-            var get3 = document.getElementById('get3').value;
-            var get4 = document.getElementById('get4').value;
+        function get() {
+            var img1 = document.getElementById("get_img1").value;
+            var img2 = document.getElementById("get_img2").value;
+            var o_img1 = document.getElementById("o_img1");
+            var o_img2 = document.getElementById("o_img2");
+            var r = document.getElementById('h');
+            r.style.display = 'inline';
+            o_img1.src = img1;
+            o_img2.src = img2;
 
-            var out1 = document.getElementById('img1');
-            var out2 = document.getElementById('img2');
-            var out3 = document.getElementById('img3');
-            var out4 = document.getElementById('img4');
+           /* const image1 = new Image();
+            image1.src = img1;
+            image1.onload = () => {
+                //console.log(image.width);
+                //console.log(image.height);
+                // 本当に画像の本来の大きさの場合は下記
+                var img1_width = image1.naturalWidth;
+                var img1_height = image1.naturalHeight;
+                if(img1_width <= 800 && img1_height <= 800) {
+                    o_img1.src = img1;
+                }*/
+            };
 
-            if(get1 && get2 && get3 && get4) {
-                out1.src = get1;
-                out2.src = get2;
-                out3.src = get3;
-                out4.src = get4;
-            }else if(get1 && get2 && get3) {
-                out1.src = get1;
-                out2.src = get2;
-                out3.src = get3;
-            } else if(get2 && get3 && get4) {
-                out2.src = get2;
-                out3.src = get3;
-                out4.src = get4;
-            } else if(get1 && get2) {
-                out1.src = get1;
-                out2.src = get2;
-            } else if(get2 && get3 ) {
-                out2.src = get2;
-                out3.src = get3;
-            } else if(get1 && get3) {
-                out1.src = get1;
-                out3.src = get3;
-            } else if(get1 && get4) {
-                out1.src = get1;
-                out4.src = get4;
-            }
-        }
+            /*const image2 = new Image();
+            image2.src = img2;
+            image2.onload = () => {
+                //console.log(image.width);
+                //console.log(image.height);
+                // 本当に画像の本来の大きさの場合は下記
+                var img2_width = image2.naturalWidth;
+                var img2_height = image2.naturalHeight;
+                if(img2_width <= 800 && img2_height <= 800) {
+                    o_img2.src = img2;
+                }
+            };
 
+        }*/
     </script>
 </head>
-<body onload="s()">
-    画像のアドレス1<input type="text" id="get1">
-    画像のアドレス2<input type="text" id="get2">
-    画像のアドレス3<input type="text" id="get3">
-    画像のアドレス4<input type="text" id="get4">
-    <button onclick="now_display()">表示</button>
-
-    <br>
-    <br>
-    <br>
-    <img src="" id="img1" alt="" >
-    <br>
-    <br>
-    <img src="" id="img2" alt="" >
-    <br>
-    <br>
-    <img src="" id="img3" alt="" >
-    <br>
-    <br>
-    <img src="" id="img4" alt="" >
-    <br>
-    <br>
-    <br>
-    <div id="history">
-        <h2>履歴</h2>
+<body onload="str()">
+    画像アドレス1 <input type="text" id="get_img1">
+    画像アドレス2 <input type="text" id="get_img2">
+    <button onclick="get()">反映</button>
+    <br><br><br>
+    <div class="container" id="h">
+        <div class="container-item">
+            <div class="container-item-img">
+                <img src="" alt="画像が指定されていないか、サイトにブロックされています" id="o_img1">
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-item-img">
+                <img src="" alt="画像が指定されていないか、サイトにブロックされています" id="o_img2">
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
