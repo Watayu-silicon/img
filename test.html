@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container{
+        .container1{
             display: flex;
             justify-content: space-between;
         }
@@ -17,15 +17,15 @@
         }
         .container-item-img1{
             position: relative;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
         }
         .container-item-img2{
             position: relative;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
         }
         .container-item-img3{
             position: relative;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
         }
         .container-item-img4{
             position: relative;
@@ -38,7 +38,7 @@
             object-fit: scale-down;
             width: 100%; 
             left:5%;
-            top:50px;
+            top:17px;
         }
         .container-item-img2 img{
             position: inherit;
@@ -47,7 +47,7 @@
             object-fit: scale-down;
             width: 100%;
             right:5%;
-            top:20px;
+            top:17px;
         }
         .container-item2{
             position: relative;
@@ -61,6 +61,7 @@
             object-fit: scale-down;
             width: 100%;
             left:5%;
+            top: -17px;
         }
         .container-item-img4 img{
             position: inherit;
@@ -69,7 +70,16 @@
             object-fit: scale-down;
             width: 100%;
             right:5%;
-            top:-20px;
+            top:-17px;
+        }
+        .container1{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container-item1{
+            position: relative;
+            float: left;
+            width: 46%;
         }
         .f {
             position: relative;
@@ -81,18 +91,8 @@
             var img4 = document.getElementById('get_img4');
             img3.style.display = 'none';
             img4.style.display = 'none';
-            if(!localStorage.getItem('c')) {
-                localStorage.setItem('c', 1);
-            }
             var img = document.getElementById('h');
             img.style.display = 'none';
-            var history = document.getElementById("history");
-            for(let i = 18; i>=1;i--) {
-                if(localStorage.getItem('urls'+i)) {
-                    var url = localStorage.getItem('urls'+i);
-                    history.insertAdjacentHTML('beforeend', '<img src='+url+' class=h_img alt=画像が指定されていないか、サイトにブロックされています>')
-                }
-            }
             /*for(let l=18;l>=1;l--) {
                 localStorage.removeItem('urls'+l);
                 localStorage.removeItem('c')
@@ -126,6 +126,8 @@
             var o_img3 = document.getElementById("o_img3");
             var o_img4 = document.getElementById("o_img4");
             var r = document.getElementById('h');
+            var frame = document.getElementById('iframe');
+            frame.style.display="none";
             r.style.display = 'inline';
             o_img1.src = img1;
             o_img2.src = img2;
@@ -138,16 +140,6 @@
                 o_img3.style.display = 'none';
                 o_img4.style.display = 'none';
             }
-            count = localStorage.getItem('c');
-            localStorage.setItem('urls'+count, img1);
-            count2 = Number(count)+1;
-            localStorage.setItem('urls'+count2, img2);
-            count3  = Number(count2)+1;
-            localStorage.setItem('urls'+count3, img3);
-            count4  = Number(count3)+1;
-            localStorage.setItem('urls'+count4, img4);
-            count5  = Number(count4)+1;
-            localStorage.setItem('c', count5);
 
            /* const image1 = new Image();
             image1.src = img1;
@@ -190,7 +182,9 @@
         <input type="text" id="get_img4" placeholder="画像アドレス4">
     <button onclick="get()">反映</button>
     <br><br>
-    <div class="container" id="h">
+    <iframe id="iframe" src="https://you.com/" frameborder="0" width="100%" height="650px"></iframe>
+    <br><br>
+    <div class="container1" id="h">
         <div class="container-item1">
             <div class="container-item-img1">
                 <img src="" alt="画像が指定されていないか、サイトにブロックされています" id="o_img1">
@@ -214,9 +208,5 @@
         <br><br>
     </div>
     <br>
-    <div id="history">
-        <br>
-        <h2 id="b">履歴</h2>
-    </div>
 </body>
 </html>
